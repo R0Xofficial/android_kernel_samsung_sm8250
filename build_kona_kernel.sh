@@ -167,20 +167,20 @@ if [ "$USE_SDCLANG" = true ]; then
 
     PATH="/opt/qcom/Qualcomm_Snapdragon_LLVM_ARM_Toolchain_OEM/19.0.0.0/bin:${PATH}"
     KERNEL_LLVM_BIN="/opt/qcom/Qualcomm_Snapdragon_LLVM_ARM_Toolchain_OEM/19.0.0.0/bin/clang"
-    BUILD_CROSS_COMPILE="aarch64-linux-gnu-"
-    CLANG_TRIPLE="aarch64-linux-gnu-"
+    BUILD_CROSS_COMPILE="aarch64-none-linux-gnu-"
+    CLANG_TRIPLE="aarch64-none-linux-gnu-"
     CROSS_COMPILE_ARM32="arm-linux-gnueabi-"
 else
     echo "Using AOSP LLVM"
-    if [ ! -d "/home/atakan/clang/clang-r547379/bin" ] || [ ! -d "/home/atakan/gas" ]; then
+    if [ ! -d "/home/msi/clang/clang-r547379/bin" ] || [ ! -d "/home/msi/gas" ]; then
         echo "Error: AOSP toolchain directories not found. Exiting."
         exit 1
     fi
 
-    PATH="/home/atakan/clang/clang-r547379/bin:/home/atakan/gas:${PATH}"
-    KERNEL_LLVM_BIN="/home/atakan/clang/clang-r547379/bin/clang"
-    GAS_CROSS_COMPILE="/home/atakan/gas/aarch64-linux-gnu-"
-    GAS_CROSS_COMPILE_COMPAT="/home/atakan/gas/arm-linux-gnueabi-"
+    PATH="/home/msi/clang/clang-r547379/bin:/home/msi/gas:${PATH}"
+    KERNEL_LLVM_BIN="/home/msi/clang/clang-r547379/bin/clang"
+    GAS_CROSS_COMPILE="/home/msi/gas/aarch64-none-linux-gnu-"
+    GAS_CROSS_COMPILE_COMPAT="/home/msi/gas/arm-linux-gnueabi-"
 fi
 
 # Set kernel build environment variables
