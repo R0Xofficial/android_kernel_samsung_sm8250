@@ -4987,17 +4987,17 @@ static int get_psy_type(struct dwc3_msm *mdwc)
 	if (mdwc->charging_disabled)
 		return -EINVAL;
 
-	if (!mdwc->usb_psy || IS_ERR(mdwc->usb_psy)) {
+	if (!mdwc->usb_psy) {
 		mdwc->usb_psy = power_supply_get_by_name("usb");
-		
-		if (!mdwc->usb_psy || IS_ERR(mdwc->usb_psy)) {
-			mdwc->usb_psy = NULL;
-			return POWER_SUPPLY_TYPE_UNKNOWN;
+		if (!mdwc->usb_psy) {
+			dev_err(mdwc->dev, "Could not get usb psy\n");
+			return -ENODEV;
+
 		}
 	}
 
-	if (power_supply_get_property(mdwc->usb_psy, POWER_SUPPLY_PROP_REAL_TYPE, &pval))
-		return POWER_SUPPLY_TYPE_UNKNOWN;
+	power_supply_get_property(mdwc->usb_psy, POWER_SUPPLY_PROP_REAL_TYPE,
+			&pval);
 
 	return pval.intval;
 }
