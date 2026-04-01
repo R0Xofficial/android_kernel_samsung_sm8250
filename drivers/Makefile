@@ -110,12 +110,6 @@ obj-$(CONFIG_PARIDE) 		+= block/paride/
 obj-$(CONFIG_TC)		+= tc/
 obj-$(CONFIG_UWB)		+= uwb/
 obj-$(CONFIG_SAMSUNG_UWB)	+= uwb/
-obj-$(CONFIG_USB_PHY)		+= usb/
-obj-$(CONFIG_USB)		+= usb/
-obj-$(CONFIG_USB_SUPPORT)	+= usb/
-obj-$(CONFIG_PCI)		+= usb/
-obj-$(CONFIG_USB_GADGET)	+= usb/
-obj-$(CONFIG_OF)		+= usb/
 obj-$(CONFIG_SERIO)		+= input/serio/
 obj-$(CONFIG_GAMEPORT)		+= input/gameport/
 obj-$(CONFIG_INPUT)		+= input/
@@ -210,6 +204,14 @@ obj-y				+= ccic/
 ifeq ($(CONFIG_BATTERY_SAMSUNG_V2), y)
 	obj-$(CONFIG_BATTERY_SAMSUNG)	+= battery_v2/
 endif
+
+# USB
+obj-$(CONFIG_USB_PHY)		+= usb/
+obj-$(CONFIG_USB)		+= usb/
+obj-$(CONFIG_USB_SUPPORT)	+= usb/
+obj-$(CONFIG_PCI)		+= usb/
+obj-$(CONFIG_USB_GADGET)	+= usb/
+obj-$(CONFIG_OF)		+= usb/
 
 # COMBO REDRIVER
 obj-$(CONFIG_REDRIVER)	        += redriver/
